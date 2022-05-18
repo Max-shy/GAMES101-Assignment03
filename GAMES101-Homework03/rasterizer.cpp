@@ -282,7 +282,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eig
                  z_interpolated *= w_reciprocal; //z-buffer
 
                  if (z_interpolated < depth_buf[get_index(i, j)])
-                 {      
+                 {
                      //interpolate
                      // color 
                      auto interpolated_color = interpolate(alpha, beta, gamma, t.color[0], t.color[1], t.color[2], 1);

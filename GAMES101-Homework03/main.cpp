@@ -133,7 +133,7 @@ Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload& payload)
         //diffuse
         Eigen::Vector3f Ld = kd.cwiseProduct(light.intensity / r);
         Ld *= std::max(0.0f, normal.normalized().dot(light_dir.normalized()));
-        //speculor 
+        //speculor
         Eigen::Vector3f h = (light_dir + view_dir).normalized();//add two vector addition, get angle bisector
         Eigen::Vector3f Ls = ks.cwiseProduct(light.intensity / r);
         Ls *= std::pow(std::max(0.0f, normal.normalized().dot(h)), p);
@@ -207,13 +207,13 @@ Eigen::Vector3f bump_fragment_shader(const fragment_shader_payload& payload)
 
     float p = 150;
 
-    Eigen::Vector3f color = payload.color;
+    Eigen::Vector3f color = payload.color; 
     Eigen::Vector3f point = payload.view_pos;
     Eigen::Vector3f normal = payload.normal;
 
     Eigen::Vector3f result_color = { 0, 0, 0 };
     float kh = 0.2, kn = 0.1;
-
+    
     // TODO: Implement bump mapping here
     float u = payload.tex_coords.x();
     float v = payload.tex_coords.y();
@@ -288,7 +288,7 @@ Eigen::Vector3f displacement_fragment_shader(const fragment_shader_payload& payl
 
     point += (kn * normal* payload.texture->getColor(u, v).norm());
     normal = (TEG * ln).normalized();
-
+    
     Eigen::Vector3f result_color = { 0, 0, 0 };
     for (auto& light : lights)
     {
@@ -297,7 +297,7 @@ Eigen::Vector3f displacement_fragment_shader(const fragment_shader_payload& payl
         Eigen::Vector3f light_dir = light.position - point;//l,light direction
         Eigen::Vector3f view_dir = eye_pos - point;//v , camera direction
         float r = light_dir.dot(light_dir);// r^2,distance of light and point 
-
+    
         //ambient light
         Eigen::Vector3f La = ka.cwiseProduct(amb_light_intensity);//Dot product
         //diffuse
@@ -440,6 +440,7 @@ int main(int argc, const char** argv)
         {
             angle += 0.1;
         }
+
     }
     return 0;
 }
