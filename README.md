@@ -62,7 +62,7 @@ I didn't use MSAA here because it was too slow and not very effective.
 
 **normal_shader_shader()**:
 
-![output_normal_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_normal_fragment_shader.png)
+![output_normal_fragment_shader](https://user-images.githubusercontent.com/68177870/168940869-2d97fef1-15c2-45ff-8396-f20201f6dc40.png)
 
 
 
@@ -75,25 +75,13 @@ I'll start with a review of the Blinn-Phong reflection model.
 It consists of three parts:
 
 - Diffuse reflection: To reflect light around with the same intensity
-  $$
-  L_d = k_d(I/r^2)max(0,\vec{n}\cdot \vec{l})
-  $$
-  
-
+ 
 - Specular highlights: The brightest part
-  $$
-  L_s = k_s(I/r^2)max(0,\vec{n}\cdot \vec{h})^p
-  $$
-
+  
 - Ambient light: A constant color of light
-  $$
-  L_a = k_a I_a
-  $$
 
 The result color is equal to the sum of these three parts.
-$$
-L = L_a +L_d + L_s \\
-$$
+
 
 ```CPP
 Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload& payload)
@@ -138,7 +126,7 @@ Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload& payload)
 
 phong_fragment_shader result: 
 
-![output_phong_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_phong_fragment_shader.png)
+![output_phong_fragment_shader](https://user-images.githubusercontent.com/68177870/168940969-57c526ae-319a-4e1f-82f8-496254681c6b.png)
 
 
 
@@ -176,7 +164,7 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
 
 texture_fragment_shader result: 
 
-![output_texture_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_texture_fragment_shader.png)
+![output_texture_fragment_shader](https://user-images.githubusercontent.com/68177870/168940970-095bbf6b-4f97-4cf5-a710-0f2d4a3a8afa.png)
 
 
 
@@ -187,28 +175,11 @@ Next, I need to complete the rendering with the **Bump mapping**.
 Bump mapping makes the object concave and convex by adding disturbance to the normal vector.
 
 Set the initial normal vector to  (0,0,1), according to the calculation method in 3D: 
-$$
-n(p) = (0,0,1) \\
-\begin{cases}
-\frac{dp}{du} = c1*[h(u+1)-h(u)] \\
-\frac{dp}{dv} = c2*[h(v+1)-h(v)] \\
-\end{cases}\\
-$$
+
 The updated normal vector is : 
-$$
-\vec{n} = (-\frac{dp}{du},\frac{dp}{dv},1)
-$$
+
 Then use the  inverse  view matrix transforms the normal vector to the global coordinates: 
-$$
-R^{-1}_{view} = 
-\left[
-\begin{matrix}
-x_{\hat{g}\times\hat{t}}  &x_t &x_{-g}	\\
-y_{\hat{g}\times\hat{t}}   &y_t  &y_{-g}\\
-z_{\hat{g}\times\hat{t}}   &z_t  &z_{-g}\\
-\end{matrix}
-\right] \\
-$$
+
 And then just normalize the normal vectors.
 
 ```CPP
@@ -248,7 +219,8 @@ Eigen::Vector3f bump_fragment_shader(const fragment_shader_payload& payload)
 
 bump_fragment_shader result:
 
-![output_bump_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_bump_fragment_shader.png)
+![output_bump_fragment_shader](https://user-images.githubusercontent.com/68177870/168940990-b052b24f-e116-4488-ad77-5c56ca3ea482.png)
+
 
 
 
@@ -281,7 +253,8 @@ Eigen::Vector3f displacement_fragment_shader(const fragment_shader_payload& payl
 
 Displacement mapping result:
 
-![output_displacement_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_displacement_fragment_shader.png)
+![output_displacement_fragment_shader](https://user-images.githubusercontent.com/68177870/168940995-2656002c-b1f4-489e-bc4b-ecf5fe6421ee.png)
+
 
 
 
@@ -289,11 +262,12 @@ I tried to render the other models offered in the course.
 
 1. rendering bunny.obj with normal_fragment_shader.
 
-   ![output](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\bunny\output.png)
+  ![output](https://user-images.githubusercontent.com/68177870/168941029-38afc78b-434d-44dc-a175-810453a2d002.png)
+
 
 2. rendering spot control_mesh.obj with normal_fragment_shader.
 
-   ![output_spot_control_mesh](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_spot_control_mesh.png)
+   
 
    
 
@@ -303,7 +277,6 @@ I tried to render the other models offered in the course.
 
 At last, I tried to implement Bilinear Interpolation in the Texture class.
 
-![image-20220518085522394](C:\Users\mjdn\AppData\Roaming\Typora\typora-user-images\image-20220518085522394.png)
 
 We need to take four pixels and interpolate the pixel values within them.
 
@@ -333,21 +306,18 @@ Compare bilinear Interpolation effects with different textures :
 
 before:
 
-![output_texture_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_texture_fragment_shader.png)
+
 
 
 
 After:
 
-![output_Bilinear_Interpolation](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_Bilinear_Interpolation.png)
 
 
 
 We can definitely feel the image becoming clearer.
 
-![Before1](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\Before1.png)
 
-![image-20220518092851220](C:\Users\mjdn\AppData\Roaming\Typora\typora-user-images\image-20220518092851220.png)
 
 
 
@@ -365,10 +335,5 @@ After:
 
 We can definitely feel the image becoming smoother.
 
-Before:
 
-![image-20220518094009750](C:\Users\mjdn\AppData\Roaming\Typora\typora-user-images\image-20220518094009750.png)
 
-After:
-
-![image-20220518093920996](C:\Users\mjdn\AppData\Roaming\Typora\typora-user-images\image-20220518093920996.png)
