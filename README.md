@@ -267,7 +267,8 @@ I tried to render the other models offered in the course.
 
 2. rendering spot control_mesh.obj with normal_fragment_shader.
 
-   
+   ![output_spot_control_mesh](https://user-images.githubusercontent.com/68177870/168955916-d3e1b671-cd99-4e8f-be70-ed0da2a898c2.png)
+
 
    
 
@@ -306,17 +307,21 @@ Compare bilinear Interpolation effects with different textures :
 
 before:
 
+![output_texture_fragment_shader](https://user-images.githubusercontent.com/68177870/168955940-304f54c1-ba10-4492-941b-d9bfed54ce97.png)
 
 
 
 
 After:
 
+![output_Bilinear_Interpolation](https://user-images.githubusercontent.com/68177870/168955945-97afc9a3-7d59-41a9-8456-27d7ddf4c521.png)
 
 
 
 We can definitely feel the image becoming clearer.
+![Before1](https://user-images.githubusercontent.com/68177870/168955963-772cb9bb-6875-4cbf-83ea-ba9bc2f476e2.png)
 
+![After1](https://user-images.githubusercontent.com/68177870/168955971-d35f4606-2eb6-46e8-b5b3-78137f2b290e.png)
 
 
 
@@ -324,14 +329,10 @@ We can definitely feel the image becoming clearer.
 Using bump_fragment_shader to compare bilinear Interpolation effects :
 
 before:
-
-![output_bump_fragment_shader](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_bump_fragment_shader.png)
-
-
+![output_bump_fragment_shader](https://user-images.githubusercontent.com/68177870/168955995-9b80f0a0-cd07-40df-9a57-cc3195467ef7.png)
 
 After:
-
-![output_Bilinear_Interpolation2](E:\CG\Games\GAMES101\Homework\03(Lecture 06)\GAMES101-Homework03\images\spot\output_Bilinear_Interpolation2.png)
+![output_Bilinear_Interpolation2](https://user-images.githubusercontent.com/68177870/168956000-63eaae35-9221-4658-8a91-07f3c2fe511a.png)
 
 We can definitely feel the image becoming smoother.
 
